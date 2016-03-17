@@ -1,52 +1,331 @@
-<!DOCTYPE html>
-<html>
+<?php 
+	include 'conexion.php';
+	$con=conexion();
+	$tipo = "Imagen";
+	$estado = "Activo";
+	$consulta = "SELECT * FROM objetos where tipo ='".$tipo."' and estado ='".$estado."'";
+	$resultado=mysql_query($consulta,$con);
+	$Sw=0;
+	while ($row = mysql_fetch_row($resultado)){
+		if($Sw==0){
+			$imagen1 = $row[2];
+			$Sw=1;
+			continue;
+		}
+		if($Sw==1){
+			$imagen2 = $row[2];
+			$Sw=2;
+			continue;
+		}
+		
+		if($Sw==2){
+			$imagen3 = $row[2];
+			$Sw=3;
+			continue;
+		}
+		if($Sw==3){
+			$imagen4 = $row[2];
+			$Sw=4;
+			continue;
+		}
+		
+		if($Sw==4){
+			$imagen5 = $row[2];
+			$Sw=5;
+			continue;
+		}
+		
+		if($Sw==5){
+			$imagen6 = $row[2];
+			$Sw=6;
+			continue;
+		}
+		// if($Sw==6){
+		// 	$imagen7 = $row[2];
+		// 	$Sw=7;
+		// 	continue;
+		// }
+		
+		// if($Sw==7){
+		// 	$imagen8 = $row[2];
+		// 	$Sw=8;
+		// 	continue;
+		// }
+		// if($Sw==8){
+		// 	$imagen9 = $row[2];
+		// 	$Sw=9;
+		// 	continue;
+		// }
+		
+		// if($Sw==9){
+		// 	$imagen10 = $row[2];
+		// 	$Sw=10;
+		// 	continue;
+		// }
+		
+	}
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Biomatic : Pagina con informacion del grupo de investigacion Biomac">
+	
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Biomatic</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="stylesheet/style.css" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+<script type="text/javascript" src="js2/jssor.slider.min.js"></script>
+ <script>
+        jssor_1_slider_init = function() {
+            
+            var jssor_1_SlideshowTransitions = [
+              {$Duration:1200,x:0.2,y:-0.1,$Delay:20,$Cols:8,$Rows:4,$Clip:15,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:260,$Easing:{$Left:$Jease$.$InWave,$Top:$Jease$.$InWave,$Clip:$Jease$.$OutQuad},$Outside:true,$Round:{$Left:1.3,$Top:2.5}},
+              {$Duration:1500,x:0.3,y:-0.3,$Delay:20,$Cols:8,$Rows:4,$Clip:15,$During:{$Left:[0.1,0.9],$Top:[0.1,0.9]},$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:260,$Easing:{$Left:$Jease$.$InJump,$Top:$Jease$.$InJump,$Clip:$Jease$.$OutQuad},$Outside:true,$Round:{$Left:0.8,$Top:2.5}},
+              {$Duration:1500,x:0.2,y:-0.1,$Delay:20,$Cols:8,$Rows:4,$Clip:15,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:260,$Easing:{$Left:$Jease$.$InWave,$Top:$Jease$.$InWave,$Clip:$Jease$.$OutQuad},$Outside:true,$Round:{$Left:0.8,$Top:2.5}},
+              {$Duration:1500,x:0.3,y:-0.3,$Delay:80,$Cols:8,$Rows:4,$Clip:15,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$Easing:{$Left:$Jease$.$InJump,$Top:$Jease$.$InJump,$Clip:$Jease$.$OutQuad},$Outside:true,$Round:{$Left:0.8,$Top:2.5}},
+              {$Duration:1800,x:1,y:0.2,$Delay:30,$Cols:10,$Rows:5,$Clip:15,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$SlideOut:true,$Reverse:true,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:2050,$Easing:{$Left:$Jease$.$InOutSine,$Top:$Jease$.$OutWave,$Clip:$Jease$.$InOutQuad},$Outside:true,$Round:{$Top:1.3}},
+              {$Duration:1000,$Delay:30,$Cols:8,$Rows:4,$Clip:15,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraightStairs,$Assembly:2049,$Easing:$Jease$.$OutQuad},
+              {$Duration:1000,$Delay:80,$Cols:8,$Rows:4,$Clip:15,$SlideOut:true,$Easing:$Jease$.$OutQuad},
+              {$Duration:1000,y:-1,$Cols:12,$Formation:$JssorSlideshowFormations$.$FormationStraight,$ChessMode:{$Column:12}},
+              {$Duration:1000,x:-0.2,$Delay:40,$Cols:12,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:260,$Easing:{$Left:$Jease$.$InOutExpo,$Opacity:$Jease$.$InOutQuad},$Opacity:2,$Outside:true,$Round:{$Top:0.5}},
+              {$Duration:2000,y:-1,$Delay:60,$Cols:15,$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Easing:$Jease$.$OutJump,$Round:{$Top:1.5}}
+            ];
+            
+            var jssor_1_options = {
+              $AutoPlay: true,
+              $SlideshowOptions: {
+                $Class: $JssorSlideshowRunner$,
+                $Transitions: jssor_1_SlideshowTransitions,
+                $TransitionsOrder: 1
+              },
+              $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+              },
+              $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$
+              }
+            };
+            
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+            
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizing
+            function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                    refSize = Math.min(refSize, 600);
+                    jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+            ScaleSlider();
+            $Jssor$.$AddEvent(window, "load", ScaleSlider);
+            $Jssor$.$AddEvent(window, "resize", $Jssor$.$WindowResizeFilter(window, ScaleSlider));
+            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+            //responsive code end
+        };
+    </script>
+</head>
+<body>
+<style>
+        
+        /* jssor slider bullet navigator skin 01 css */
+        /*
+        .jssorb01 div           (normal)
+        .jssorb01 div:hover     (normal mouseover)
+        .jssorb01 .av           (active)
+        .jssorb01 .av:hover     (active mouseover)
+        .jssorb01 .dn           (mousedown)
+        */
+        .jssorb01 {
+            position: absolute;
+        }
+        .jssorb01 div, .jssorb01 div:hover, .jssorb01 .av {
+            position: absolute;
+            /* size of bullet elment */
+            width: 12px;
+            height: 12px;
+            filter: alpha(opacity=70);
+            opacity: .7;
+            overflow: hidden;
+            cursor: pointer;
+            border: #000 1px solid;
+        }
+        .jssorb01 div { background-color: gray; }
+        .jssorb01 div:hover, .jssorb01 .av:hover { background-color: #d3d3d3; }
+        .jssorb01 .av { background-color: #fff; }
+        .jssorb01 .dn, .jssorb01 .dn:hover { background-color: #555555; }
 
-    <title>Biomatic</title>
-  </head>
+        /* jssor slider arrow navigator skin 05 css */
+        /*
+        .jssora05l                  (normal)
+        .jssora05r                  (normal)
+        .jssora05l:hover            (normal mouseover)
+        .jssora05r:hover            (normal mouseover)
+        .jssora05l.jssora05ldn      (mousedown)
+        .jssora05r.jssora05rdn      (mousedown)
+        */
+        .jssora05l, .jssora05r {
+            display: block;
+            position: absolute;
+            /* size of arrow element */
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: url('img/a17.png') no-repeat;
+            overflow: hidden;
+        }
+        .jssora05l { background-position: -10px -40px; }
+        .jssora05r { background-position: -70px -40px; }
+        .jssora05l:hover { background-position: -130px -40px; }
+        .jssora05r:hover { background-position: -190px -40px; }
+        .jssora05l.jssora05ldn { background-position: -250px -40px; }
+        .jssora05r.jssora05rdn { background-position: -310px -40px; }
+    </style>
 
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/pipe23/Biomatic">View on GitHub</a>
-
-          <h1 id="project_title">Biomatic</h1>
-          <h2 id="project_tagline">Pagina con informacion del grupo de investigacion Biomac</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/pipe23/Biomatic/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/pipe23/Biomatic/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+<div id="container">
+  
+    <div class="menuzone">
+      <div class="mainmenu">
+        <ul>
+		  <li><a href="home.php">Inicio</a></li>
+		  <li><a href="formulacion.php">Formulaci&oacuten Estrategica</a></li>
+		  <li><a href="plan_accion.php">Plan de Acci&oacuten</a></li>
+		  <li><a href="logros.php">Nuestros Logros </a> </li>	
+		  <li><a href="semilleros.php">Semilleros</a></li>	
+		</ul>
+		
+      </div>
     </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a id="grupo-laboratorio-biomac" class="anchor" href="#grupo-laboratorio-biomac" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Grupo Laboratorio Biomac</h3>
-
-<p>En la pagina esta toda la informacion sobre el grupo </p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Biomatic maintained by <a href="https://github.com/pipe23">pipe23</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
+   <a href="Archivos/PRESENTACION - Lineamientos- SENNOVA 2016.pdf"><img src="Archivos/logo_sennova.png" alt="lineamientos SENNOVA 2016"/></a>
     
-
-  </body>
+<br>	
+  
+  <div align="center"><strong><big><h1>GRUPO DE INVESTIGACI&OacuteN BIOMATIC</span></big></strong></h1></div>
+  <div class="clear"></div>
+  <div class="webpanel">
+    <div>
+	
+		<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden; visibility: hidden;">
+               <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+            <div style="position:absolute;display:block;background:url('img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+        </div>
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden;">
+            
+			<div data-p="112.50" style="display: none;">
+                <img data-u="image" src="Archivos/<?php echo $imagen1;?>"/>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <img data-u="image" src="Archivos/<?php echo $imagen2;?>"/>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <img data-u="image" src="Archivos/<?php echo $imagen3;?>"/>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <img data-u="image" src="Archivos/<?php echo $imagen4;?>"/>
+            </div>
+			<div data-p="112.50" style="display: none;">
+                <img data-u="image" src="Archivos/<?php echo $imagen5;?>"/>
+            </div>
+ 	<!--		<div data-p="112.50" style="display: none;">
+                // <img data-u="image" src="Archivos/<?php echo $imagen6;?>"/>
+            </div> -->
+          <!--  <div data-p="112.50" style="display: none;">
+                // <img data-u="image" src="Archivos/<?php echo $imagen7;?>"/>
+            </div> -->
+<!--             <div data-p="112.50" style="display: none;">
+                // <img data-u="image" src="Archivos/<?php echo $imagen8;?>"/>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                // <img data-u="image" src="Archivos/<?php echo $imagen9;?>"/>
+            </div>
+			<div data-p="112.50" style="display: none;">
+                // <img data-u="image" src="Archivos/<?php echo $imagen10;?>"/> -->
+            <!-- </div> -->
+        </div>
+        
+        <div data-u="navigator" class="jssorb01" style="bottom:16px;right:16px;">
+            <div data-u="prototype" style="width:12px;height:12px;"></div>
+        </div>
+       
+        <span data-u="arrowleft" class="jssora05l" style="top:0px;left:8px;width:40px;height:40px;" data-autocenter="2"></span>
+        <span data-u="arrowright" class="jssora05r" style="top:0px;right:8px;width:40px;height:40px;" data-autocenter="2"></span>
+        <a href="http://www.jssor.com" style="display:none"></a>
+		</div>
+		<script>
+		  jssor_1_slider_init();
+		</script>
+		
+	</div>
+    <div class="clear"></div>
+    <div class="workzone">
+      <div class="column1">
+        <div>
+          <div>
+            <h1><span class="whiteheading"><center>Historia</center></span></h1>
+          </div>
+          <!--<div class="subbaner"><img src="images/" alt="" /></div>-->
+          <div> En el Centro de Dise&ntilde;o y Manufactura del Cuero, se ha involucrado, en las acciones de formaci&oacuten el componente de Biomec&aacutenica aplicada al Dise&ntilde;o de Calzado e Introducci&oacuten y manipulaci&oacuten de Materiales para componentes de calzado en los programas de la l&iacutenea medular del mismo La incorporaci&oacuten de esta estrategia de formaci&oacuten, ha dado como resultado la generaci&oacuten de proyectos de investigaci&oacuten con sentido innovador, los cuales se articularan con el grupo BIOMAC "Biomecanica y Materiales para el Calzado".El grupo de investigaci&oacuten BIOMAC tiene como misi&oacuten, promover las capacidades investigativas de sus integrantes (Instructores, aprendices, empresas), fortaleciendo las acciones de formaci&oacuten al igual que el trabajo colaborativo, logrando una participaci&oacuten permanente con el sector Cuero, calzado y Marroquiner&iacutea, desarrollando proyectos de investigaci&oacuten que permitan afianzar e innovar en el &aacuterea de biomec&aacutenica aplicada al dise&ntilde;o de calzado y en la formulaci&oacuten y desarrollo de materiales para cada uno de sus componentes, fundamentada en el talento humano de sus integrantes y aprendices manteniendo una posici&oacuten de liderazgo en el sector a trav&eacutes de un trabajo creativo, cient&iacutenfico, inovador y pertinente.<br>
+A finales del a&ntilde;o 2013 con la creaci&oacuten del SENOVA "Sistema de Investigaci&oacuten, Desarrollo Tecnol&oacutengico e Innovaci&oacuten del SENA" SENOVA, donde uno de sus prop&oacutensitos es el de fortalecer los est&aacutendares de calidad y pertinencia, en las &aacutereas de investigaci&oacuten, desarrollo tecnol&oacutengico e inovaci&oacuten, de la formaci&oacuten profesional impartida en la Entidad, el grupo BIOMAC se da cuenta que debe articular a su grupo de investigaci&oacuten todos los programas formativos que ofrece el Centro de Dise&ntilde;o y Manufactura del Cuero, por lo que cambia su nombre a BIOMATIC "Biomec&aacutenica, materiales, TICS, dise&ntilde;o y calidad para el sector cuero, pl&aacutestico y caucho y sus cadenas productivas" ampliando todas sus l&iacuteneas de trabajo con el fin de articular todos sus proyectos formativos con la investigaci&oacuten.Durante el a&ntilde;o 2013 el Centro de Dise&ntilde;o y Manufactura del Cuero tom&oacuten la iniciativa de dise&ntilde;ar e implantar un Plan Estrat&eacutegico de Investigaci&oacuten que deb&iacutena constituir el primer paso para avanzar hacia la obtenci&oacuten de un grupo de Investigaci&oacuten reconocido ante Colciencias.<br>
+De esta manera, con la elaboraci&oacuten del Plan Estrat&eacutegico de Investigaci&oacuten del grupo "BIOMATIC", se desplegaron unos planes de acci&oacuten que inclu&iacutenan tanto la puesta en marcha de los planes de formaci&oacuten (semillero de Investigaci&oacuten), y articular los proyectos formativos de los aprendices del SENA a las l&iacuteneas del grupo de Investigaci&oacuten, as&iacuten como el Plan de Proyectos de inovaci&oacuten y desarrollo.</div>
+        </div>
+      </div>
+      <div class="column2">
+        <div>
+          <div>
+            <h1><span class="whiteheading"><center>Objetivos</center></span></h1>
+          </div>
+          <!--<div class="subbaner"><img src="images/ourservice.jpg" alt="" /></div>-->
+          <div>Transformar el Centro de Dise&ntilde;o y Manufactura del Cuero en un Centro de Innovaci&oacuten Tecnol&oacutegica para el cuero, pl&aacutestico, caucho y sus cadenas productivas, que fortalezca la productividad y competitividad de las empresas del Departamento de Antioquia con actividades de innovaci&oacuten que permitan el mejoramiento de procesos, materiales, dise&ntilde;o y desarrollo de productos y servicios.<br><br>
+Ofrecer nuevos programas de formaci&oacuten que complementen los ya existentes con el fin de atender las necesidades del sector del cuero, pl&aacutestico, caucho y sus manufacturas.<br><br>
+Transferir tecnolog&iacutea, conocimiento e informaci&oacuten a las empresas del sector, buscando reducir la brecha tecnol&oacutegica que les impide competir en igualdad de condiciones con pa&iacuteses con mayor desarrollo.<br><br>
+Ofrecer servicios especializados para el fortalecimiento de la productividad y competitividad de las empresas en el Departamento de Antioquia de los sectores calzado, pl&aacutestico y caucho.
+          </div>
+         
+        </div>
+      </div>
+      <div class="column3">
+        <div>
+          <div>
+            <h1> <span class="whiteheading"><center>An&aacutelisis Interno</center></span></h1>
+          </div>
+          <!--<div class="subbaner"><img src="images/analisis_interno.jpg" alt="" /></div>-->
+          <div> <center><strong>OBJETIVOS: </strong><br><br></center>
+El objetivo de esta l&iacutenea de investigaci&oacuten es generar y transferir conocimiento relacionados con 5 &aacutereas de inter&eacutes, materiales, biomec&aacutenica, dise&ntilde;o, Tics, gesti&oacuten estrat&eacutegica y de procesos a los sectores cuero, caucho, pl&aacutestico, joyeria y sus cadenas productivas, al sector acad&eacutemico y a las diferentes redes de conocimiento que hacen parte del SENA.<br><br>
+<center><strong>Logros Especificos por Areas de Interes:</strong><br><br><br></center>
+<center><strong>MATERIALES:</strong><br><br></center> Mejoramiento y desarrollo de materiales para los sectores cuero, pl&aacutestico, caucho, joyer&iacutea y sus cadenas productivas.<br><br>
+  <center><strong>DISE&Ntilde;O:</strong><br><br></center> Desarrollo y transferencia de metodolog&iacuteas de dise&ntilde;o y de pensamiento de dise&ntilde;o para la elaboraci&oacuten de productos, procesos y servicios para los sectores cuero, pl&aacutestico, caucho, joyer&iacutena y sus cadenas productivas.<br><br>
+<center><strong>SISTEMAS DE INFORMACI&OacuteN Y TICS:</strong><br><br></center> Integrar tecnolog&iacuteas de la informaci&oacuten y la comunicaci&oacuten a los productos y servicios de los sectores cuero, pl&aacutestico, caucho, joyer&iacutena y sus cadenas productivas, con especial &eacutenfasis en la adaptaci&oacuten a los retos que impone las nuevas tendencias del mercado.<br><br>
+<center><strong>GESTION ESTRATEGICA Y DE PROCESOS:</strong><br><br></center> Generar y transferir conocimientos que garanticen la sostenibilidad, productividad, competitividad y la valorizaci&oacuten de las organizaciones para los sectores cuero, pl&aacutestico, caucho, joyer&iacutena y sus cadenas productivas. </div>
+         <!--  <div class="more"><a href="analisis_interno.php">Ver Imagen</a></div> -->
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="contactzone">
+        <div class="contact-left">
+          <div class="lightgreenheading">Cont&aacutectenos</span></div>
+        </div>
+        <div class="contact-right"><strong>Centro de Dise&ntilde;o y Manufactura del Cuero</strong><br />
+          Calle 63 # 58 B 09, Itagu&iacute Antioquia.<br />
+          <br />
+          <br />
+          <span class="redtxt">Telefono: </span> (094) 514 92 90 ext. 43168  <br />
+          <span class="redtxt">Fax: </span>(094) 2 81 40 82 <br/>
+		  <span class="redtxt">Mail:</span>labcuerocalzado@misena.edu.co <br/>
+		 </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="clear"></div>
+  <div class="footer">
+    <div class="footerlink"> Copyright (c) Todos los derechos reservados. </div> <div class="footerlink"><div class="more"><a href="inicio.php">Adm. Sitio Web</a></div></div>
+  </div>
+</div>
+</body>
 </html>
+
